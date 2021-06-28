@@ -9,7 +9,7 @@
     <title>Kishu</title>
     <style>
         .box {
-            max-width: 60%;
+            max-width: 40%;
             position: absolute;
             left: 50%;
             top: 50%;
@@ -32,19 +32,31 @@
             border-radius: 3px;
             position: absolute;
             bottom: 40px;
-            right: 0;
+            right: 12px;
             font-size: 10px;
             color: #9F59B9;
-            height: 120px;
+            height: 170px;
             width: 480px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            padding: 10px 16px;
+            padding: 10px 16px 0 16px;
         }
         .flex {
             display: flex;
             justify-content: space-between;
             align-content: center;
+            margin-bottom: 12px;
+            color: #E65100;
+            padding-right: 12px;
+        }
+        #show-content {
+            box-sizing: border-box;
+            padding-top: 6px;
+            height: 130px;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .show-li {
+            word-wrap:break-word;
+            word-break:break-all;
         }
     </style>
 </head>
