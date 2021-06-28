@@ -58,6 +58,9 @@
             word-wrap:break-word;
             word-break:break-all;
         }
+        #iframes {
+            display: none;
+        }
     </style>
 </head>
 
@@ -99,8 +102,6 @@
   // 执行定时刷新
   function start(box,urls,showDom,countDom) {
     setInterval(() => {
-        console.log('loadAll',loadAll);
-        console.log('iframesAll',iframesAll.length);
         if(loadAll === iframesAll.length) {
             box.innerHTML = ''
             showDom.innerHTML = '<div></div>'
@@ -129,8 +130,34 @@
   var iframesBox = document.getElementById('iframes')
   var iframesAll = document.getElementsByTagName('iframe')
   createIframe(iframesBox,urls, showDom, countDom)
-  start(iframesBox,urls,showDom, countDom)
+  // start(iframesBox,urls,showDom, countDom)
 </script>
 </body>
-
+<style>
+    @media screen and (max-width: 1366px) {
+        body {}
+        .box {
+            position: inherit;
+            transform: none;
+            margin:  10px auto 120px;
+            width: 90%;
+        }
+        .box  > img {
+            width: 100%;
+        }
+        #showRun {
+            position: inherit;
+            margin:  0 auto;
+            width: 80%;
+            height: 260px;
+            overflow: hidden;
+        }
+        #show-content {
+            height: calc(100% - 40px);
+        }
+        .show-li {
+            margin-top: 6px;
+        }
+    }
+</style>
 </html>
