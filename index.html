@@ -76,6 +76,7 @@
 <script>
   // 创建iframe
   function  createIframe (iframesBox, urls,showDom,countDom) {
+      loadAll = 0
       freshCount += 1
       countDom && (countDom.innerText = freshCount)
       var fragment = document.createDocumentFragment();
@@ -98,9 +99,15 @@
   // 执行定时刷新
   function start(box,urls,showDom,countDom) {
     setInterval(() => {
-        box.innerHTML = ''
-        showDom.innerHTML = '<div></div>'
-        createIframe(box, urls,showDom,countDom)
+        console.log('loadAll',loadAll);
+        console.log('iframesAll',iframesAll.length);
+        if(loadAll === iframesAll.length) {
+            box.innerHTML = ''
+            showDom.innerHTML = '<div></div>'
+            createIframe(box, urls,showDom,countDom)
+        }else {
+            console.log('等待加载完毕...');
+        }
     }, 3000);
   }
 </script>
@@ -120,6 +127,7 @@
   var countDom = document.getElementById('count')
   var loadAll = 0
   var iframesBox = document.getElementById('iframes')
+  var iframesAll = document.getElementsByTagName('iframe')
   createIframe(iframesBox,urls, showDom, countDom)
   start(iframesBox,urls,showDom, countDom)
 </script>
