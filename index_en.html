@@ -96,15 +96,18 @@
         <input
           id="set-interval-button"
           type="button"
-          value="设置刷新间隔（毫秒）"
+          value="Set Refresh Interval (ms)"
           onclick="setIntervalTime()"
         />
       </span>
     </div>
     <div id="showDom">
       <div class="flex">
-        <span>访问结果：</span
-        ><span>累计访问<span id="count">0</span><span>次</span></span>
+        <span>Results：</span
+        ><span
+          >Total Visit Count: <span id="count">0</span
+          ><span> Round(s)</span></span
+        >
       </div>
       <div id="show-content">
         <div></div>
@@ -130,7 +133,7 @@
               if (showDom && showDom.innerHTML) {
                 showDom.innerHTML =
                   showDom.innerHTML +
-                  `<div class="show-li">访问${iframeDom.src}成功...</div>`;
+                  `<div class="show-li">Visit to ${iframeDom.src} succeeded...</div>`;
               }
             });
             fragment.appendChild(iframeDom);
@@ -142,10 +145,12 @@
       function setIntervalTime() {
         intervalTime = parseInt(intervalInput.value);
         if (isNaN(intervalTime) || intervalTime <= 0) {
-          alert("请输入正确的数字！");
+          alert("Please correctly enter the number!");
           return;
         } else if (intervalTime <= 5000) {
-          alert("友情提示：设置刷新间隔过低可能导致浏览器无法完成全部请求。");
+          alert(
+            "Friendly reminder: setting a too low refresh interval may result in unsuccessful visit requests."
+          );
         }
         clearInterval(intervalHandle);
         intervalHandle = setInterval(() => {
@@ -159,7 +164,7 @@
         if (showDom && showDom.innerHTML) {
           showDom.innerHTML =
             showDom.innerHTML +
-            `<div class="show-li">设置刷新间隔为${intervalTime}毫秒成功！</div>`;
+            `<div class="show-li">Set refresh interval to ${intervalTime} ms succeeded!</div>`;
         }
       }
 
@@ -182,7 +187,7 @@
         if (showDom && showDom.innerHTML) {
           showDom.innerHTML =
             showDom.innerHTML +
-            `<div class="show-li">当前刷新间隔为${intervalTime}毫秒！</div>`;
+            `<div class="show-li">Current refresh interval is ${intervalTime} ms!</div>`;
         }
       }
     </script>
